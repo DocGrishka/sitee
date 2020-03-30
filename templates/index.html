@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+{% extends "base.html" %}
+{% block content %}
+<h1 align="center">Товары</h1>
+{% for i in range(1, n + 1) %}
+
+<table align="center" border="1" width="800px">
+    <tr>
+        <td>
+            Наименование товара
+        </td>
+        <td>
+
+            Цена
+        </td>
+        <td>
+            Производитель
+        </td>
+  {% if current_user.is_authenticated %}
+        <td>
+        Купить
+        </td>
+        {% endif %}
+
+
+    </tr>
+    <tr>
+        {% for j in list_data[i - 1] %}
+        <td>
+            {{j}}
+        </td>
+        {% endfor %}
+             {% if current_user.is_authenticated %}
+        <td>
+            <a href="/thank" class="btn btn-warning">Купить</a>
+        </td>
+        {% endif %}
+    </tr>
+</table>
+<br>
+{% endfor %}
+{% endblock %}
+</body>
+</html>
